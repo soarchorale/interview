@@ -9,13 +9,15 @@ void ComplexAdd::GenRandomDouble() {
 	for (size_t i = 0;
 		i < sizeof(st_b_.data) / sizeof(double); i++) {
 		st_b_.data[i] = rand() / double(RAND_MAX);
-		sum_b_ += st_b_.data[i];
 	}
-	// st_b_buffer_.push_back(st_b_);
 }
 
 void ComplexAdd::Add() {
 	// std::lock_guard<std::mutex> lk(mtx_lock_);
+	for (size_t i = 0;
+		i < sizeof(st_b_.data) / sizeof(double); i++) {
+		sum_b_ += st_b_.data[i];
+	}
 	if (st_a_.a % 2) {
 		sum_b_all_ += sum_b_;
 	}
@@ -56,4 +58,3 @@ void ComplexAdd::Print() {
 		std::cout << sum_b_all_ << std::endl;
 	}
 }
-

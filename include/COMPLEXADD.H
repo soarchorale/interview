@@ -1,15 +1,14 @@
-#include <iostream>
+#ifndef COMPLEXADD_H_
+#define COMPLEXADD_H_
 
+#include <iostream>
 #include <vector>
 #include <list>
 #include <string>
-
 #include <random>
-
 #include <thread>
 #include <condition_variable>
 #include <mutex>
-
 
 class ComplexAdd {
  public:
@@ -21,13 +20,13 @@ class ComplexAdd {
 	  }
 	  sum_b_all_ = 0.0;
   }
+  ~ComplexAdd(){}
   ComplexAdd(const ComplexAdd& other) {
 	  st_a_ = other.st_a_;
 	  st_b_ = other.st_b_;
 	  sum_b_ = other.sum_b_;
 	  sum_b_all_ = other.sum_b_all_;
   }
-  ~ComplexAdd(){}
   void operator()() {}
 
   void GenRandomInt();
@@ -56,3 +55,5 @@ class ComplexAdd {
   std::mutex mtx_lock_;
   std::condition_variable gen_cond_;
 };
+
+#endif // !COMPLEXADD_H_
